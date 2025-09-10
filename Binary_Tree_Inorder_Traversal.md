@@ -46,49 +46,51 @@ The number of nodes in the tree is in the range [0, 100].
 
 
 Answer:
-Recursive way:
+### Recursive Way
 
+```java
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-       List<Integer> res=new ArrayList<>();
-        inorder(root,res);
+        List<Integer> res = new ArrayList<>();
+        inorder(root, res);
         return res;
     }
-    private void inorder(TreeNode node,List<Integer> res)
-    {
-        if(node==null){
+
+    private void inorder(TreeNode node, List<Integer> res) {
+        if (node == null) {
             return;
         }
-        inorder(node.left,res);
+        inorder(node.left, res);
         res.add(node.val);
-        inorder(node.right,res);
+        inorder(node.right, res);
     }
 }
 
-Iterative way:
+```
+###Iterative Way 
 
+```java
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-       TreeNode current=root;
-       List<Integer> listt=new ArrayList<>();
-       Stack<TreeNode> stackk=new Stack<>();
-       while(current!=null || !stackk.isEmpty())
-       {
-       if(current!=null)
-       {
-        stackk.push(current);
-        current=current.left;
-       }
-       else
-       {
-        current=stackk.pop();
-        listt.add(current.val);
-        current=current.right;
-       }
-       }
-       return listt;
+        TreeNode current = root;
+        List<Integer> listt = new ArrayList<>();
+        Stack<TreeNode> stackk = new Stack<>();
+
+        while (current != null || !stackk.isEmpty()) {
+            if (current != null) {
+                stackk.push(current);
+                current = current.left;
+            } else {
+                current = stackk.pop();
+                listt.add(current.val);
+                current = current.right;
+            }
+        }
+        return listt;
     }
 }
+
+
 
 
 
