@@ -69,23 +69,22 @@ Iterative way:
 
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-       TreeNode current=root;
-       List<Integer> listt=new ArrayList<>();
-       Stack<TreeNode> stackk=new Stack<>();
-       while(current!=null || !stackk.isEmpty())
-       {
-       if(current!=null)
-       {
-        stackk.push(current);
-        current=current.left;
-       }
-       else
-       {
-        current=stackk.pop();
-        listt.add(current.val);
-        current=current.right;
-       }
-       }
-       return listt;
+        TreeNode current = root;
+        List<Integer> listt = new ArrayList<>();
+        Stack<TreeNode> stackk = new Stack<>();
+
+        while (current != null || !stackk.isEmpty()) {
+            if (current != null) {
+                stackk.push(current);      // push root, go left
+                current = current.left;
+            } else {
+                current = stackk.pop();    // when no left, pop parent
+                listt.add(current.val);    // visit it
+                current = current.right;   // then go right
+            }
+        }
+        return listt;
     }
 }
+
+
