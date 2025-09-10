@@ -67,7 +67,7 @@ class Solution {
 }
 
 ```
-###Iterative Way 
+### Iterative Way 
 
 ```java
 class Solution {
@@ -89,6 +89,7 @@ class Solution {
         return listt;
     }
 }
+
 
 
 
