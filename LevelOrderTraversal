@@ -1,0 +1,28 @@
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> finalList=new ArrayList<>();
+        Queue<TreeNode> qt=new LinkedList<>();
+        if(root==null) return finalList;
+        qt.add(root);
+        while(!qt.isEmpty())
+        {
+            List<Integer> resList=new ArrayList<>();
+            int size=qt.size();
+            for(int i=0;i<size;i++)
+            {
+                TreeNode curr=qt.poll();
+                resList.add(curr.val);
+                if(curr.left!=null)
+                {
+                    qt.add(curr.left);
+                }
+                if(curr.right!=null)
+                {
+                    qt.add(curr.right);
+                }
+            }
+            finalList.add(resList);
+        }
+        return finalList;
+    }
+}
