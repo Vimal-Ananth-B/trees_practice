@@ -1,0 +1,34 @@
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        TreeNode curr=root;
+        List<Integer> reslist=new ArrayList<>();
+        Stack<TreeNode> stackk=new Stack<>();
+        Set<TreeNode> sett=new HashSet<>();
+        while(!stackk.isEmpty() || curr!=null)
+        {
+            if(curr!=null && curr.left!=null && !sett.contains(curr))
+            {
+                stackk.push(curr);
+                curr=curr.left;
+            }
+            else if(curr!=null && curr.left==null && !sett.contains(curr))
+            {
+                reslist.add(curr.val);
+                TreeNode newcurr=stackk.pop();
+                reslist.add(newcurr.val);
+                sett.add(curr);
+                sett.add(newcurr);
+                curr=newcurr;
+            }
+            else if(curr!=null && curr.right!=null)
+            {
+                curr=curr.right;
+            }
+            else
+            {
+                curr=stackk.pop();
+            }
+        }
+        return reslist;
+    }
+}
