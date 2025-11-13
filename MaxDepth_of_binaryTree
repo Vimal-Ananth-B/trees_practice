@@ -1,0 +1,25 @@
+BFS Iterative approach:
+class Solution {
+    public int maxDepth(TreeNode root) {
+        int maxDepth=0;
+        if(root==null) return maxDepth;
+        TreeNode curr=root;
+        Queue<TreeNode> qtt=new LinkedList<>();
+        qtt.add(curr);
+        while(!qtt.isEmpty())
+        {
+            int size=qtt.size();
+            for(int i=0;i<size;i++)
+            {
+                curr=qtt.poll();
+                if(curr!=null && curr.left!=null) qtt.add(curr.left);
+                if(curr!=null && curr.right!=null) qtt.add(curr.right);
+                if(i==size-1)
+                {
+                    maxDepth++;
+                }
+            }
+        }
+        return maxDepth;
+    }
+}
