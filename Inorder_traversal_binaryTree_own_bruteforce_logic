@@ -32,3 +32,28 @@ class Solution {
         return reslist;
     }
 }
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+class Solution { 
+    public List<Integer> inorderTraversal(TreeNode root) { 
+        TreeNode curr=root; 
+        List<Integer> reslist=new ArrayList<>(); 
+        Stack<TreeNode> stackk=new Stack<>(); 
+        while(!stackk.isEmpty() || curr!=null) 
+        { 
+            if(curr!=null)
+            {
+                stackk.push(curr);
+                curr=curr.left;
+            }
+            else
+            {
+                curr=stackk.pop();
+                reslist.add(curr.val);
+                curr=curr.right;
+            }
+        }
+        return reslist; 
+    } 
+    }
