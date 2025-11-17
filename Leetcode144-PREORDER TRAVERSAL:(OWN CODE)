@@ -1,0 +1,43 @@
+PREORDER TRAVERSAL:(OWN CODE)
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+         Stack<TreeNode> stackk=new Stack<>();
+	      Set<TreeNode> sett=new HashSet<>();
+        List<Integer> ResList=new ArrayList<>();
+        TreeNode curr=root;
+        stackk.push(curr);
+        while(curr!=null || !stackk.isEmpty())
+        {
+            if(curr!=null && !sett.contains(curr)) 
+            {
+                ResList.add(curr.val);
+		        sett.add(curr);
+            }
+            if(curr!=null && curr.left!=null && !sett.contains(curr.left))
+            {
+                stackk.push(curr.left);
+                curr=curr.left;
+            }
+            else
+            {
+                if(curr!=null &&curr.right!=null && !sett.contains(curr.right))
+                {
+                    stackk.push(curr.right);
+                    curr=curr.right;
+                }
+                else
+                {
+                   if(!stackk.isEmpty()) 
+                   { 
+                    curr=stackk.pop(); 
+                    }
+                   else
+                   {
+                    break;
+                   }
+                }
+            }
+        }
+        return ResList;
+    }
+}
